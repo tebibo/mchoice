@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+</head>
+<body layout:fragment="content">
+<h1>Editer la question</h1>
+<form action="#" th:action="@{'/mcqQuestion/' + ${mcqQuestion.id}}" th:object="${mcqQuestion}" method="post">
+    <div>
+        <label>Coef</label>
+        <input type="number" th:value="*{coefficient}" />
+    </div>
+    <p><input type="submit" value="Enregistrer" /></p>
+</form>
+
+<div>
+    <h4>Reponses</h4>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Réponse</th>
+            <th>Points</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="answer : ${mcqQuestion.answers}">
+            <td th:text="${answer.id}"></td>
+            <td th:text="${answer.answer.label}"></td>
+            <td th:text="${answer.points}"></td>
+            <td>
+                <a th:href="@{'/mcqAnswer/delete/' + ${answer.id}}">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<form action="#" th:action="@{'/mcqAnswer/new'}" th:object="${answerForm}" method="post">
+    <div>
+        <label>Nouvelle réponse</label>
+        <select th:field="*{answer}">
+            <option th:each="availableAnswer : ${availableAnswers}" th:value="${{availableAnswer}}" th:text="${availableAnswer.label}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label>Points</label>
+        <input type="number" th:field="*{points}" />
+    </div>
+    <input type="hidden" th:value="form" th:field="*{{mcqQuestion}}" />
+    <p><input type="submit" value="Ajouter" /></p>
+</form>
+
+
+</body>
+</html>

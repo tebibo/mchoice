@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+</head>
+<body layout:fragment="content">
+<h1>Réponses</h1>
+<div>
+    <span class="pull-right"> <a th:href="@{'/answer/new'}">Créer</a></span>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Libellé</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="answer : ${answers}">
+            <td th:text="${answer.id}"></td>
+            <td th:text="${answer.label}"></td>
+            <td>
+                <a th:href="@{'/answer/' + ${answer.id}}">Editer</a>
+                <a th:href="@{'/answer/delete/' + ${answer.id}}">Supprimer</a>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+</body>
+</html>

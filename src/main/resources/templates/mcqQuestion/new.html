@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<body layout:fragment="content">
+<h1>Ajouter une question au QCM</h1>
+<form action="#" th:action="@{/mcqQuestion/new}" th:object="${form}" method="post">
+    <div>
+        <label>Question</label>
+        <select th:field="*{question}">
+            <option th:each="question : ${questions}" th:value="${{question}}" th:text="${question.label}"></option>
+        </select>
+    </div>
+
+    <div>
+        <label>Coef</label>
+        <input type="number" th:value="*{coefficient}" />
+    </div>
+    <input type="hidden" th:field="*{{mcq}}" />
+    <div><input type="submit" value="Enregistrer" /></div>
+</form>
+
+</body>
+</html>
+

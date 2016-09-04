@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>mChoice</title>
+    <link rel="stylesheet" href="/mchoice/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<div class="container">
+<div class="row">
+    <div class="col-md-3">
+        <ul>
+            <li><strong>Se connecter en tant que</strong></li>
+            <li><a th:href="@{'/user/connect/defaultTeacher'}">defaultTeacher</a></li>
+            <li><a th:href="@{'/user/connect/Jean'}">Jean</a></li>
+            <li><a th:href="@{'/user/connect/Edouard'}">Edouard</a></li>
+            <li><a th:href="@{'/user/connect/Michel'}">Michel</a></li>
+            <li><a th:href="@{'/user/connect/Sebastien'}">Sebastien</a></li>
+            <li><a th:href="@{'/user/connect/Jacquie'}">Jacquie</a></li>
+        </ul>
+
+        <ul>
+            <li><strong>Naviguer</strong></li>
+            <li><a th:href="@{'/question'}">Questions</a></li>
+            <li><a th:href="@{'/answer'}">Réponses</a></li>
+            <li><a th:href="@{'/mcq'}">QCM</a></li>
+        </ul>
+    </div>
+    <div class="col-md-6 col-md-offset-1">
+
+        <div id="content" layout:fragment="content">
+            <p>Page content goes here</p>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

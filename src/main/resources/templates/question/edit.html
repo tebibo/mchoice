@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+</head>
+<body layout:fragment="content">
+<h1>Editer la question</h1>
+<form action="#" th:action="@{'/question/' + ${form.id}}" th:object="${form}" method="post">
+    <p>Libéllé de la question: <input type="text" th:field="*{label}" /></p>
+    <p><input type="submit" value="Enregistrer" /></p>
+</form>
+</body>
+</html>

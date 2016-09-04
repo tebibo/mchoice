@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+</head>
+<body layout:fragment="content">
+<h1>Editer le QCM</h1>
+<form action="#" th:action="@{'/mcq/' + ${form.id}}" th:object="${form}" method="post">
+    <p>Titre du QCM: <input type="text" th:field="*{title}" /></p>
+    <p><input type="submit" value="Enregistrer" /></p>
+</form>
+
+<div>
+    <h4>Questions</h4>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Question</th>
+            <th>Coef</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="question : ${form.questions}">
+            <td th:text="${question.id}"></td>
+            <td th:text="${question.question.label}"></td>
+            <td th:text="${question.coefficient}"></td>
+            <td>
+                <a th:href="@{'/mcqQuestion/' + ${question.id}}">Editer</a>
+                <a th:href="@{'/mcqQuestion/delete/' + ${question.id}}">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+<a th:href="@{'/mcqQuestion/new/' + ${form.id}}">Ajouter question</a>
+</body>
+</html>

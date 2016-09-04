@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+</head>
+<body layout:fragment="content">
+<h1>Editer la réponse</h1>
+<form action="#" th:action="@{'/mcqAnswer/' + form.id}" th:object="${form}" method="post">
+
+    <div>
+        <label>Points</label>
+        <input type="number" th:value="*{mcq.coefficient}" />
+    </div>
+    <input type="hidden" th:field="*{{mcq}}" />
+    <input type="hidden" th:field="*{{mcqQuestion}}" />
+
+    <div><input type="submit" value="Enregistrer" /></div>
+</form>
+</body>
+</html>

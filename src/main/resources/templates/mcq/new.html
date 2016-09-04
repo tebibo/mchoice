@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<body layout:fragment="content">
+<h1>Créer un QCM</h1>
+<form action="#" th:action="@{/mcq/new}" th:object="${form}" method="post">
+    <p>Titre du QCM: <input type="text" th:field="*{title}" /></p>
+    <p><input type="hidden" th:field="*{createdBy}" /></p>
+    <p><input type="submit" value="Enregistrer" /></p>
+</form>
+</body>
+</html>
+
